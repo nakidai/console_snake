@@ -4,13 +4,15 @@ from frame import Frame
 
 
 class Out:
-    def __init__(self) -> None:
+    def __init__(self, pl: Player) -> None:
         self.width = WIDTH
         self.height = HEIGHT
         self.fps = FPS
+        self.pl = pl
 
-    def draw(self, pl: Player) -> None:
+    def draw(self) -> None:
         frame = Frame(self.width, self.height)
+        pl = self.pl
 
         for point in pl.body:
             if point.x < 0 or point.y < 0:
@@ -36,4 +38,4 @@ class Out:
             )
 
         frame.show()
-        print(F"Score: {pl.score}")
+        print(f"Score: {pl.score}")

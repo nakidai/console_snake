@@ -1,8 +1,6 @@
 from settings import *
 from point import Point
 from food import Food
-from time import sleep
-from itertools import permutations
 
 
 class Player:
@@ -13,24 +11,19 @@ class Player:
         self.food = Food(0, 0, self)
         self.food.generate_new()
 
-        self.score = 0
+        self.score = 1
 
-    def update(self) -> None:
-        sleep(1 / FPS)
-
+    def input(self) -> None:
         if self.direction == D_UP:
-            # self.body[0].y -= 1
             self.body.append(Point(self.body[-1].x, self.body[-1].y - 1))
         elif self.direction == D_DOWN:
-            # self.body[0].y += 1
             self.body.append(Point(self.body[-1].x, self.body[-1].y + 1))
         elif self.direction == D_LEFT:
-            # self.body[0].x -= 1
             self.body.append(Point(self.body[-1].x - 1, self.body[-1].y))
         elif self.direction == D_RIGHT:
-            # self.body[0].x += 1
             self.body.append(Point(self.body[-1].x + 1, self.body[-1].y))
 
+    def update(self) -> None:
         if self.body[-1] == self.food:
             self.food.generate_new()
             self.score += 1
