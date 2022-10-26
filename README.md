@@ -1,2 +1,7 @@
 # console_snake
-Snake, but in console
+Snake, but in console  
+
+Default keys:  
+--
+W A S D - move  
+Q - quit
