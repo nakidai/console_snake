@@ -36,3 +36,4 @@ class Out:
             )
 
         frame.show()
+        print(F"Score: {pl.score}")

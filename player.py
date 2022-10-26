@@ -13,6 +13,8 @@ class Player:
         self.food = Food(0, 0, self)
         self.food.generate_new()
 
+        self.score = 0
+
     def update(self) -> None:
         sleep(1 / FPS)
 
@@ -31,6 +33,7 @@ class Player:
 
         if self.body[-1] == self.food:
             self.food.generate_new()
+            self.score += 1
         else:
             self.body.pop(0)
 

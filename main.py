@@ -38,6 +38,8 @@ class Game:
                 self.running = False
                 print(e)
 
+        input("Press enter to leave from game")
+
 
 def main() -> None:
     Game().play()

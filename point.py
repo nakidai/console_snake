@@ -12,7 +12,7 @@ class Point:
         else:
             raise TypeError("You can compare only Point with Point")
 
-    def __hash__(self) -> None:
+    def __hash__(self) -> int:
         return int(f"{abs(self.x)}000{abs(self.y)}")
 
     def __str__(self) -> str:
