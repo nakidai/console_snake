@@ -1,5 +1,19 @@
 from settings import *
-import os
+from sys import platform
+
+if platform == "win32":
+    from ctypes import *
+    STD_OUTPUT_HANDLE = -11
+    STDHANDLE = windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
+
+    class COORDSET(Structure):
+        _fields_ = [("X", c_long), ("Y", c_long)]
+
+    def _set_cursor_position(x: int, y: int) -> None:
+        windll.kernel32.SetConsoleCursorPosition(STDHANDLE, COORDSET(x, y))
+else:
+    def _set_cursor_position(x: int, y: int) -> None:
+        print(f"\033[{x};{y}H")
 
 
 class Frame:
@@ -26,7 +40,7 @@ class Frame:
                 self.matrix[y + line][x + column] = value
 
     def show(self) -> None:
-        os.system("clear||cls")
+        _set_cursor_position(0, 0)
 
         out_string = f"┍{'━' * (self.width * 2)}┑\n"
 

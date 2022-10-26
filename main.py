@@ -3,6 +3,7 @@ from settings import *
 from player import Player
 import keyboard as kb
 from out import Out
+from os import system
 
 
 class Game:
@@ -27,6 +28,7 @@ class Game:
         pass
 
     def play(self) -> None:
+        system("clear||cls")
 
         while self.running:
             try:
