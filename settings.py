@@ -25,3 +25,10 @@ SPACE = 0
 WALL = 1
 FOOD = 2
 WALL_FOOD = 3
+HEAD = 4
+
+TT_SPACE = "  "
+TT_WALL = "██"
+TT_FOOD = "@@"
+TT_WALL_FOOD = "@█"
+TT_HEAD = "██"

@@ -20,6 +20,12 @@ class Out:
                 width=1, height=1
             )
 
+        frame.draw(
+            x=pl.body[-1].x, y=pl.body[-1].y,
+            value=HEAD,
+            width=1, height=1
+        )
+
         if frame.see(pl.food.x, pl.food.y) == WALL:
             frame.draw(
                 x=pl.food.x, y=pl.food.y,

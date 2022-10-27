@@ -50,13 +50,15 @@ class Frame:
             to_str += '│'
             for elem in line:
                 if elem == SPACE:
-                    to_str += "  "
+                    to_str += TT_SPACE
                 elif elem == WALL:
-                    to_str += "██"
+                    to_str += TT_WALL
                 elif elem == FOOD:
-                    to_str += "@@"
+                    to_str += TT_FOOD
                 elif elem == WALL_FOOD:
-                    to_str += "@█"
+                    to_str += TT_WALL_FOOD
+                elif elem == HEAD:
+                    to_str += TT_HEAD
             to_str += '│\n'
 
             out_string += to_str
