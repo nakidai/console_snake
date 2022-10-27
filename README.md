@@ -4,4 +4,5 @@ Snake, but in console
 Default keys:  
 --
 W A S D - move  
-Q - quit
+Q - quit  
+P - pause
