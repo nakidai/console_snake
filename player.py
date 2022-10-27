@@ -23,6 +23,16 @@ class Player:
         elif self.direction == D_RIGHT:
             self.body.append(Point(self.body[-1].x + 1, self.body[-1].y))
 
+    def _check_collision(body: list[Point]) -> None:
+        for point in body:
+            if point.x < 0 or point.y < 0:
+                raise IndexError("Snake has collision with walls")
+            elif point.x >= WIDTH or point.y >= HEIGHT:
+                raise IndexError("Snake has collision with walls")
+
+        if len(set(body)) != len(body):
+            raise IndexError("Player has collision with self")
+
     def update(self) -> None:
         if self.body[-1] == self.food:
             self.food.generate_new()
@@ -30,8 +40,7 @@ class Player:
         else:
             self.body.pop(0)
 
-        if len(set(self.body)) != len(self.body):
-            raise IndexError("Player has collision with self")
+        Player._check_collision(self.body)
 
     def left(self) -> None:
         self.direction = D_LEFT

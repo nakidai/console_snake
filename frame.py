@@ -9,10 +9,10 @@ if platform == "win32":
     class COORDSET(Structure):
         _fields_ = [("X", c_long), ("Y", c_long)]
 
-    def _set_cursor_position(x: int, y: int) -> None:
+    def set_cursor_position(x: int, y: int) -> None:
         windll.kernel32.SetConsoleCursorPosition(STDHANDLE, COORDSET(x, y))
 else:
-    def _set_cursor_position(x: int, y: int) -> None:
+    def set_cursor_position(x: int, y: int) -> None:
         print(f"\033[{x};{y}H")
 
 
@@ -40,7 +40,7 @@ class Frame:
                 self.matrix[y + line][x + column] = value
 
     def show(self) -> None:
-        _set_cursor_position(0, 0)
+        set_cursor_position(0, 0)
 
         out_string = f"┍{'━' * (self.width * 2)}┑\n"
 

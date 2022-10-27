@@ -5,6 +5,7 @@ FPS = 5
 
 # Buttons
 QUIT_BUTTON = 'q'
+PAUSE_BUTTON = 'p'
 LEFT_BUTTON = 'a'
 RIGHT_BUTTON = 'd'
 UP_BUTTON = 'w'

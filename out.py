@@ -7,7 +7,6 @@ class Out:
     def __init__(self, pl: Player) -> None:
         self.width = WIDTH
         self.height = HEIGHT
-        self.fps = FPS
         self.pl = pl
 
     def draw(self) -> None:
@@ -15,11 +14,6 @@ class Out:
         pl = self.pl
 
         for point in pl.body:
-            if point.x < 0 or point.y < 0:
-                raise IndexError("Snake has collision with walls")
-            elif point.x >= WIDTH or point.y >= HEIGHT:
-                raise IndexError("Snake has collision with walls")
-
             frame.draw(
                 x=point.x, y=point.y,
                 value=WALL,
