@@ -8,7 +8,7 @@ class Player:
         self.direction = MAIN_DIRECTION
         self.body = [Point(MAIN_X, MAIN_Y)]
 
-        self.food = Food(0, 0, self)
+        self.food = Food(0, 0)
         self.food.generate_new()
 
         self.score = 1

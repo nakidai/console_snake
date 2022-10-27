@@ -14,13 +14,13 @@ class Game:
         self.is_pause = False
 
         kb.add_hotkey(QUIT_BUTTON, self.stop_game)
-        kb.add_hotkey(PAUSE_BUTTON, self.pause_game)
+        kb.add_hotkey(PAUSE_BUTTON, self.switch_pause)
         kb.add_hotkey(LEFT_BUTTON, self.pl.left)
         kb.add_hotkey(RIGHT_BUTTON, self.pl.right)
         kb.add_hotkey(UP_BUTTON, self.pl.up)
         kb.add_hotkey(DOWN_BUTTON, self.pl.down)
 
-    def pause_game(self) -> None:
+    def switch_pause(self) -> None:
         self.is_pause = not self.is_pause
 
     def stop_game(self) -> None:
