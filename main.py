@@ -3,7 +3,7 @@ from player import Player
 import keyboard as kb
 from out import Out
 from os import system
-from time import sleep
+from time import sleep, time
 
 
 class Game:
@@ -28,16 +28,22 @@ class Game:
 
     def play(self) -> None:
         system("clear||cls")
-        time_to_sleep = 1 / FPS
+
+        start_time = time()
+        different_between_time = 1 / FPS
 
         while self.running:
             try:
-                sleep(time_to_sleep)
+                sleep(1 / FPS - different_between_time)
+                start_time = time()
 
                 if not self.is_pause:
                     self.pl.input()
                     self.pl.update()
                     self.out.draw()
+
+                end_time = time()
+                different_between_time = start_time - end_time
 
             except IndexError as e:
                 self.running = False
