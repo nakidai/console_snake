@@ -4,13 +4,13 @@ class Point:
         self.y = y
 
     def __eq__(self, other) -> bool:
-        if isinstance(other, Point):
-            if self.x == other.x and self.y == other.y:
-                return True
-            else:
-                return False
+        if not isinstance(other, Point):
+            return False
+
+        if self.x == other.x and self.y == other.y:
+            return True
         else:
-            raise TypeError("You can compare only Point with Point")
+            return False
 
     def __hash__(self) -> int:
         return int(f"{abs(self.x)}000{abs(self.y)}")

@@ -23,14 +23,20 @@ class Frame:
         self.matrix = [[SPACE] * width for line in range(height)]
 
     def __str__(self) -> str:
-        out_string = f"Width:\n  {self.width}\n"
-        out_string += f"Height:\n  {self.height}\n"
-        return out_string
+        return (
+            f"Width:\n  {self.width}\n"
+            f"Height:\n  {self.height}"
+        )
 
     def draw(
-        self, x: int, y: int,
+        self,
+
+        x: int,
+        y: int,
+
         value: int = WALL,
-        width: int = 1, height: int = 1
+        width: int = 1,
+        height: int = 1
     ) -> None:
         if not isinstance(value, int):
             raise TypeError("Value must be int")
@@ -42,12 +48,12 @@ class Frame:
     def show(self) -> None:
         set_cursor_position(0, 0)
 
-        out_string = f"┍{'━' * (self.width * 2)}┑\n"
+        out_string = f"{WALL_COLOR}┍{'━' * (self.width * 2)}┑{RESET_COLOR}\n"
 
         for line in self.matrix:
             to_str = ''
 
-            to_str += '│'
+            to_str += f'{WALL_COLOR}│{RESET_COLOR}'
             for elem in line:
                 if elem == SPACE:
                     to_str += TT_SPACE
@@ -59,10 +65,10 @@ class Frame:
                     to_str += TT_WALL_FOOD
                 elif elem == HEAD:
                     to_str += TT_HEAD
-            to_str += '│\n'
+            to_str += f'{WALL_COLOR}│{RESET_COLOR}\n'
 
             out_string += to_str
-        out_string += f"┕{'━' * (self.width * 2)}┙"
+        out_string += f"{WALL_COLOR}┕{'━' * (self.width * 2)}┙{RESET_COLOR}"
 
         print(out_string)
 
