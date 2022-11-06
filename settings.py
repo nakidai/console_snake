@@ -34,3 +34,6 @@ TT_WALL = "\u001b[34m{}\u001b[0m".format("██")
 TT_FOOD = "\u001b[33m{}\u001b[0m".format("██")
 TT_WALL_FOOD = "\u001b[32m{}\u001b[0m".format("██")
 TT_HEAD = "\u001b[36m{}\u001b[0m".format("██")
+
+# Globals
+is_pause = False

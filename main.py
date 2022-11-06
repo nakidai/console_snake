@@ -9,25 +9,43 @@ from time import sleep, time
 class Game:
     def __init__(self) -> None:
         self.running = True
-        self.pl = Player()
-        self.out = Out(self.pl)
         self.is_pause = False
+        self.pl = Player(self)
+        self.out = Out(self.pl)
 
         kb.add_hotkey(QUIT_BUTTON, self.stop_game)
         kb.add_hotkey(PAUSE_BUTTON, self.switch_pause)
-        kb.add_hotkey(LEFT_BUTTON, self.pl.left)
-        kb.add_hotkey(RIGHT_BUTTON, self.pl.right)
-        kb.add_hotkey(UP_BUTTON, self.pl.up)
-        kb.add_hotkey(DOWN_BUTTON, self.pl.down)
+        kb.add_hotkey(
+            LEFT_BUTTON,
+            self.pl.left,
+            args=[self]
+        )
+        kb.add_hotkey(
+            RIGHT_BUTTON,
+            self.pl.right,
+            args=[self]
+        )
+        kb.add_hotkey(
+            UP_BUTTON,
+            self.pl.up,
+            args=[self]
+        )
+        kb.add_hotkey(
+            DOWN_BUTTON,
+            self.pl.down,
+            args=[self]
+        )
 
     def switch_pause(self) -> None:
         self.is_pause = not self.is_pause
 
     def stop_game(self) -> None:
-        self.running = False
+        if not self.is_pause:
+            self.running = False
 
     def play(self) -> None:
         system("clear||cls")
+        print()
 
         start_time = time()
         different_between_time = 1 / FPS
@@ -55,7 +73,8 @@ class Game:
 
 
 def main() -> None:
-    Game().play()
+    game = Game()
+    game.play()
 
 
 if __name__ == '__main__':
