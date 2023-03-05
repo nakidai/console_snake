@@ -4,7 +4,8 @@ from food import Food
 
 
 class Player:
-    def __init__(self, game) -> None:
+    def __init__(self) -> None:
+        self.start_direciton = MAIN_DIRECTION
         self.direction = MAIN_DIRECTION
         self.body = [Point(MAIN_X, MAIN_Y)]
 
@@ -34,6 +35,8 @@ class Player:
             raise IndexError("Player has collision with self")
 
     def update(self) -> None:
+        self.start_direction = self.direction
+
         if self.body[-1] == self.food:
             self.food.generate_new()
             self.score += 1
@@ -43,17 +46,17 @@ class Player:
         Player._check_collision(self.body)
 
     def left(self, game) -> None:
-        if not game.is_pause and self.direction != D_RIGHT:
+        if not game.is_pause and self.start_direction != D_RIGHT:
             self.direction = D_LEFT
 
     def right(self, game) -> None:
-        if not game.is_pause and self.direction != D_LEFT:
+        if not game.is_pause and self.start_direction != D_LEFT:
             self.direction = D_RIGHT
 
     def up(self, game) -> None:
-        if not game.is_pause and self.direction != D_DOWN:
+        if not game.is_pause and self.start_direction != D_DOWN:
             self.direction = D_UP
 
     def down(self, game) -> None:
-        if not game.is_pause and self.direction != D_UP:
+        if not game.is_pause and self.start_direction != D_UP:
             self.direction = D_DOWN
