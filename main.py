@@ -10,7 +10,7 @@ class Game:
     def __init__(self) -> None:
         self.running = True
         self.is_pause = False
-        self.pl = Player(self)
+        self.pl = Player()
         self.out = Out(self.pl)
 
         kb.add_hotkey(QUIT_BUTTON, self.stop_game)
